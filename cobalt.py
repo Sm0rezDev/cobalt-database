@@ -1,4 +1,5 @@
 import database
+import re
 
 
 class Cobalt:
@@ -15,7 +16,20 @@ class Cobalt:
         self.data = db.data.copy()
         self.save = db.save
 
-    def fetch(self, key, obj):
+    @staticmethod
+    def _parse(query: str):
+        keyword = query.split()
+        keywords = ['SELECT', 'INSERT', 'FROM']
+
+        
+
+
+
+
+    def select(self, key, obj):
         data = self.data
         retrieved_data = data[key][obj]
         return retrieved_data
+
+    def execute(self, query: str):
+        self._parse(query)
