@@ -14,12 +14,16 @@ class Database:
         self.data = {}
         self.file_path = f'{file_path}_db.pkl'
         try:
+            # Tries to read if file exist
             with open(self.file_path, "rb") as f:
                 self.data = pickle.load(f)
         except FileNotFoundError:
+            # If file doesnt exist, attempt to create one and initialize it
+            # with empty dictionary.
             with open(self.file_path, "wb") as f:
                 pickle.dump(self.data, f)
 
+    # Write to disk
     def save(self, key, obj):
         """Save an object to the database with the given key."""
         self.data[key] = obj
