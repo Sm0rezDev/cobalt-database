@@ -13,7 +13,7 @@ class Database:
         :paramter file_path: the path to the file where the data will be stored.
         """
         self.data = {}
-        self.file_path = file_path
+        self.file_path = f'{file_path}_db.pkl'
         try:
             # Tries to read if file exist
             with open(self.file_path, "rb") as f:
