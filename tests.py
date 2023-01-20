@@ -31,3 +31,12 @@ class TestDatabase(unittest.TestCase):
 
     def test_fetch_item_by_value(self):
         self.assertEqual(cbd.fetch('', 'name'), [val['name'] for val in cbd.data[cbd.table]])
+        
+
+if __name__ == '__main__':
+    cbd = Cobalt()
+    
+    cbd.select_table('devs')
+
+    for data in cbd.fetch('', ''):
+        print(data)
