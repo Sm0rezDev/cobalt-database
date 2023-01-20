@@ -1,5 +1,4 @@
 import database
-import re
 
 
 class Cobalt:
@@ -15,21 +14,34 @@ class Cobalt:
         db = database.Database(f'{db_path}/{db_name}')
         self.data = db.data.copy()
         self.save = db.save
+        self.table = None
 
-    @staticmethod
-    def _parse(query: str):
-        keyword = query.split()
-        keywords = ['SELECT', 'INSERT', 'FROM']
+    # Set the database table to use.
+    def select_table(self, table: str = None) -> None:
+        self.table = table
 
+    # fetch data from database as list.
+    def fetch(self, key: str = None, val: str = None) -> list:
+        table: str = self.table
+        data: dict = self.data
+
+        if not table.strip():
+            raise Exception('No table selected.')
+
+        items = []
+        for item in data.get(table, []):
+            if isinstance(item, dict) and (not key or item.get('id') == key):
+                if val:
+                    items.append(item.get(val))
+                else:
+                    items.append(item)
+        return items
+
+    # Task #18 Work in Progress
+    # def insert(self, val: str):
+    #     table: str = self.table
+    #     data: dict = self.data
+
+    #     new_item = {'id': str(len(data)+1), }
+    #     data[table].append(new_item)
         
-
-
-
-
-    def select(self, key, obj):
-        data = self.data
-        retrieved_data = data[key][obj]
-        return retrieved_data
-
-    def execute(self, query: str):
-        self._parse(query)
