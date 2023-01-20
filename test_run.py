@@ -3,4 +3,8 @@ from cobalt import Cobalt
 
 if __name__ == '__main__':
     cbd = Cobalt()
-    print(cbd.fetch('0', 'name'))
+    
+    cbd.select_table('devs')
+
+    for data in cbd.fetch('', ''):
+        print(data)
