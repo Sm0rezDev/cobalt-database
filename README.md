@@ -15,6 +15,6 @@ cobalt.select(str) # Selects the table to use
 
 cobalt.insert(dict) # Inserts data to table
 
-cobalt.fetch(str, str) # Retrieve data from keys (row, column)
-
+cobalt.fetch(str, str) -> list # Retrieve data as list from keys (row, column)
 ```
+
