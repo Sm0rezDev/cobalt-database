@@ -7,7 +7,7 @@ from cobalt import Cobalt
 Test Data
 """
 test_database = {
-    'Users': [
+    'DEFAULT': [
         {'id': 1, 'name': 'Simon', 'email': 'simon.wei@chasacademy.se',
             'role': 'Developer'},
         {'id': 2, 'name': 'Melina', 'email': 'melina.asplund@chasacademy.se',
@@ -25,7 +25,7 @@ class TestDatabase(unittest.TestCase):
     def setUp(self):
         self.cobalt = Cobalt(db_path='db', db_name='cobalt_test')
         self.cobalt.data.update(test_database)
-        self.cobalt.select('Users')
+        self.cobalt.select()
 
     # def test_pickle_file_exist(self):
     #     """
@@ -53,7 +53,7 @@ class TestDatabase(unittest.TestCase):
         fetch = self.cobalt.fetch
 
         result = fetch('', '')
-        expected = test_database['Users']
+        expected = test_database['DEFAULT']
 
         self.assertEqual(result, expected)
 
@@ -79,7 +79,7 @@ class TestDatabase(unittest.TestCase):
 
         fetch = self.cobalt.fetch
         result = fetch('', 'name')
-        expected = [val['name'] for val in test_database['Users']]
+        expected = [val['name'] for val in test_database['DEFAULT']]
 
         self.assertEqual(result, expected)
 
@@ -93,7 +93,7 @@ class TestDatabase(unittest.TestCase):
 if __name__ == '__main__':
 
     cobalt = Cobalt('db', 'test')
-    cobalt.select('Users')
+    cobalt.select()
 
     for i in cobalt.fetch('', 'email'):
         print(i)

@@ -17,7 +17,7 @@ class Cobalt:
         self.table = None
 
     # Set the database table to use.
-    def select(self, table: str = ''):
+    def select(self, table: str = 'DEFAULT'):
         if not (table and table.strip()):
             raise Exception('No table selected')
         
