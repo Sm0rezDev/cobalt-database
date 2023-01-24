@@ -10,10 +10,14 @@ class FileSystem:
     """
     def __init__(self, path: str, name: str):
         """
+        User story #2
         Initialize the database by loading the data from the file,
         If the file does not exist, attempt to create one and initialize it.
         :paramter path: The directory of the database.
         :parameter name: Name of the data file.
+
+        **I want to retrieve python dictionaries previously stored to disk
+        with your library**
         """
         if not all((path and path.strip(), name and name.strip())):
             sys.exit('No database filepath defined.')
@@ -39,7 +43,12 @@ class FileSystem:
     # Write to disk
     def save(self):
         """
+        User story #1
         Writes contents from *data* dict to file.
+
+        (Same meaning as in Story #1)
+        **I want to save python dictionaries to disk so that my applications
+        can save their state for later use**
         """
         try:
             with open(self.file_path, "wb") as file:
