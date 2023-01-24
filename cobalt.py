@@ -1,5 +1,7 @@
 from file_system import FileSystem
-from off_story_code_snippets import select
+
+
+table = 'DEFAULT'
 
 
 class Cobalt:
@@ -15,7 +17,6 @@ class Cobalt:
         self.fs = FileSystem(path=db_path, name=db_name)
         self.data = self.fs.data
         self.save = self.fs.save
-        self.table = 'DEFAULT'
 
     def fetch(self, key: str = None, val: str = None) -> list:
         """
@@ -27,7 +28,6 @@ class Cobalt:
         so that I can easily refer to different entries in the database
         """
         data = self.data
-        table = self.table
 
         items = []
         if not data.get(table):
@@ -49,7 +49,6 @@ class Cobalt:
         **I want to use keys of type ~str~ to save data to the database.**
         """
         data = self.data
-        table = self.table
         save = self.save
 
         if not bool(item):
