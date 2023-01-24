@@ -93,7 +93,7 @@ class TestDatabase(unittest.TestCase):
 if __name__ == '__main__':
 
     cobalt = Cobalt('db', 'test')
-    cobalt.select()
+    cobalt.data = test_database
 
-    for i in cobalt.fetch('', 'email'):
+    for i in cobalt.fetch('1', ''):
         print(i)
