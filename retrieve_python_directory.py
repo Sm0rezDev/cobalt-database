@@ -1,14 +1,15 @@
 import os
+import pickle
+import database
 
-# find python directories 
-def find_python_dirs(root_dir):
-    python_dirs = []
-    for dirpath, dirnames, files in os.walk(root_dir):
-        for dirname in dirnames:
-            if dirname == 'python':
-                python_dirs.append(os.path.join(dirpath, dirname))
-    return python_dirs
+directory = "/" # path to search on, need to change to test if it works fully, my list is empty(?)
+dictionaries = []
 
-root_dir = '/' 
-python_dirs = find_python_dirs(root_dir)
-print(python_dirs)
+for filename in os.listdir(directory):
+    if filename.endswith('.py'): 
+        with open(os.path.join(directory, filename)) as file: 
+            data = pickle.load(file) 
+        dictionaries.append(data) 
+
+
+print(dictionaries) # Need to change so its saves to database
