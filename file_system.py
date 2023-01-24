@@ -22,7 +22,7 @@ class FileSystem:
         if not all((path and path.strip(), name and name.strip())):
             sys.exit('No database filepath defined.')
 
-        self.data = {'Users': []}
+        self.data = {'DEFAULT': []}
         self.file_path = f'{path}/{name}.pkl'
 
         try:
