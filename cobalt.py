@@ -1,4 +1,5 @@
 from file_system import FileSystem
+from off_story_code_snippets import select
 
 
 class Cobalt:
@@ -14,19 +15,16 @@ class Cobalt:
         self.fs = FileSystem(path=db_path, name=db_name)
         self.data = self.fs.data
         self.save = self.fs.save
-        self.table = None
-
-    # Set the database table to use.
-    def select(self, table: str = 'DEFAULT'):
-        if not (table and table.strip()):
-            raise Exception('No table selected')
-        
-        self.table = table
+        self.table = 'DEFAULT'
 
     def fetch(self, key: str = None, val: str = None) -> list:
         """
         Retieve data from keys and values.
         Returns a list
+
+        User story #3 part 1
+        **I want to use keys of type ~str~ to retrieve data from the database,
+        so that I can easily refer to different entries in the database
         """
         data = self.data
         table = self.table
@@ -46,6 +44,9 @@ class Cobalt:
     def insert(self, item: dict = {}) -> None:
         """
         Inserts new data to table
+
+        User story #3 part 2
+        **I want to use keys of type ~str~ to save data to the database.**
         """
         data = self.data
         table = self.table
