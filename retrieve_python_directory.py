@@ -11,5 +11,4 @@ for filename in os.listdir(directory):
             data = pickle.load(file) 
         dictionaries.append(data) 
 
-
 print(dictionaries) # Need to change so its saves to database

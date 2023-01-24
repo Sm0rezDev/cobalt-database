@@ -1,4 +1,7 @@
-import database
+from file_system import FileSystem
+
+
+table = 'DEFAULT'
 
 
 class Cobalt:
@@ -7,41 +10,58 @@ class Cobalt:
     This class provides methods to retrieve and save data to-and-from database.
     """
 
-    def __init__(self, db_path: str = 'db', db_name: str = 'cobalt'):
+    def __init__(self, db_path: str, db_name: str):
         """
-        Creates a database db object & copies data to a new dict.
+        Creates a database db object & copies data to a new dictionary.
         """
-        db = database.Database(f'{db_path}/{db_name}')
-        self.data = db.data.copy()
-        self.save = db.save
-        self.table = None
+        self.fs = FileSystem(path=db_path, name=db_name)
+        self.data = self.fs.data
+        self.save = self.fs.save
 
-    # Set the database table to use.
-    def select_table(self, table: str = None) -> None:
-        self.table = table
-
-    # fetch data from database as list.
     def fetch(self, key: str = None, val: str = None) -> list:
-        table: str = self.table
-        data: dict = self.data
+        """
+        Retieve data from keys and values.
+        Returns a list
 
-        if not table.strip():
-            raise Exception('No table selected.')
+        User story #3 part 1
+        **I want to use keys of type ~str~ to retrieve data from the database,
+        so that I can easily refer to different entries in the database
+        """
+        data = self.data
 
         items = []
+        if not data.get(table):
+            raise Exception('Table empty')
+
         for item in data.get(table, []):
-            if isinstance(item, dict) and (not key or item.get('id') == key):
+            if isinstance(item, dict) and (not key or item.get('id') == int(key)):
                 if val:
                     items.append(item.get(val))
                 else:
                     items.append(item)
         return items
 
-    # Task #18 Work in Progress
-    # def insert(self, val: str):
-    #     table: str = self.table
-    #     data: dict = self.data
+    def insert(self, item: dict = {}) -> None:
+        """
+        Inserts new data to table
 
-    #     new_item = {'id': str(len(data)+1), }
-    #     data[table].append(new_item)
+        User story #3 part 2
+        **I want to use keys of type ~str~ to save data to the database.**
+        """
+        data = self.data
+        save = self.save
+
+        if not bool(item):
+            raise Exception('No items where provided.')
+
+        if not data.get(table):
+            data[table] = [{'id': 1, **item}]
+        else:
+            data[table].append({
+                'id': max(item['id'] for item in data.get(table)) + 1,
+                **item
+            })
+
+        save()
+        
         
