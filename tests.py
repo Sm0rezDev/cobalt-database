@@ -25,7 +25,7 @@ class TestDatabase(unittest.TestCase):
     def setUp(self):
         self.cobalt = Cobalt(db_path='db', db_name='cobalt_test')
         self.cobalt.data.update(test_database)
-        self.cobalt.select()
+        #self.cobalt.select()
 
     # def test_pickle_file_exist(self):
     #     """
