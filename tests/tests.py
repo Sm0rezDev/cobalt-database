@@ -88,7 +88,7 @@ class TestDatabase(unittest.TestCase):
         fs = self.cobalt.fs
         if fs.file_path.endswith('_test.pkl'):
             os.remove(fs.file_path)
-
+             
 
 if __name__ == '__main__':
 
