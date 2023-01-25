@@ -5,7 +5,7 @@ setup(
     name='COBALT-DATABASE',
     version='0.1',
     packages=find_packages(),
-    install_requires=[],
+    install_requires=['pickle'],
     author='COBALT',
     author_email='cobalt@example.com',
     description='A library for saving and fetching python objects to and from a file on disk',

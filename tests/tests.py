@@ -1,6 +1,6 @@
 import os
 import unittest
-from src.cobalt import Cobalt
+from cobalt import Cobalt
 
 
 """
