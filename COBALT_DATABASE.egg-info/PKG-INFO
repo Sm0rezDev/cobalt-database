@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: COBALT-DATABASE
+Version: 0.1
+Summary: A library for saving and fetching python objects to and from a file on disk
+Home-page: https://github.com/Sm0rezDev/cobalt-databa
+Author: COBALT
+Author-email: cobalt@example.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
