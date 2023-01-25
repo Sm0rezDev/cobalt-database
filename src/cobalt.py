@@ -1,4 +1,4 @@
-from file_system import FileSystem
+from src.file_system import FileSystem
 
 
 table = 'DEFAULT'
