@@ -9,6 +9,9 @@ class FileSystemTest(unittest.TestCase):
     Including init() and save() methods.
     """
     def setUp(self):
+        """
+        A method for set FileSystem class paramters and create an instance of the FileSysttem class.
+        """
         self.test_path = 'test_path'
         self.test_name = 'test_file'
         self.test_data = {
@@ -26,6 +29,9 @@ class FileSystemTest(unittest.TestCase):
         self.file_system = FileSystem(self.test_path, self.test_name)
 
     def test_init_loads_data_from_file(self):
+        """
+        A method to test loading data from the database file after creating an instance of the FileSystem class.
+        """
         self.file_system.data = self.test_data
         self.file_system.save()
         file_system2 = FileSystem(self.test_path, self.test_name)
