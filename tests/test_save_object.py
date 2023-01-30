@@ -38,6 +38,11 @@ class FileSystemTest(unittest.TestCase):
         self.assertEqual(file_system2.data, self.test_data)
 
     def test_init_creates_file_if_not_exists(self):
+        """
+        A method to test the case that the database file does not exist.
+        In this case, the database file must be created when creating an instance of the FileSystem class.
+
+        """
         path = 'test_path'
         name = 'test_file'
         os.remove(f'{path}/{name}.pkl')
