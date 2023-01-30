@@ -50,6 +50,9 @@ class FileSystemTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(f'{path}/{name}.pkl'))
         
     def test_save_writes_data_to_file(self):
+        """
+        A method to test saving data to the database file. The save method of the Filesystem class should do this.
+        """
         self.file_system.data = self.test_data
         self.file_system.save()
         with open(self.file_system.file_path, "rb") as file:
@@ -57,6 +60,9 @@ class FileSystemTest(unittest.TestCase):
         self.assertEqual(data, self.test_data)
         
     def tearDown(self):
+        """
+        A method to delete the database file and its directory after running all tests.
+        """
         try:
             os.remove(f'{self.test_path}/{self.test_name}.pkl')
             os.rmdir(self.test_path)
