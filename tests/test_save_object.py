@@ -4,6 +4,10 @@ import pickle
 from src.file_system import FileSystem
 
 class FileSystemTest(unittest.TestCase):
+    """
+    A class to test all methods of the FileSystem class.
+    Including init() and save() methods.
+    """
     def setUp(self):
         self.test_path = 'test_path'
         self.test_name = 'test_file'
