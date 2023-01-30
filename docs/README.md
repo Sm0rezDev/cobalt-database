@@ -16,3 +16,5 @@ cobalt.insert(dict) # Inserts data to table
 cobalt.fetch(str, str) -> list # Retrieve data as list from keys (row, column)
 ```
 
+ the  user can install it using pip by this command:
+ pip install git+https://github.com/Sm0rezDev/cobalt-database.git
