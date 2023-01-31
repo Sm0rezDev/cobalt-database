@@ -1,5 +1,0 @@
-setup.py
-COBALT_DATABASE.egg-info/PKG-INFO
-COBALT_DATABASE.egg-info/SOURCES.txt
-COBALT_DATABASE.egg-info/dependency_links.txt
-COBALT_DATABASE.egg-info/top_level.txt
